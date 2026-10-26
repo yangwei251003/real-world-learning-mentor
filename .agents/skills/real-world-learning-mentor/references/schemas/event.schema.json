@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/real-world-learning-mentor/event.schema.json",
+  "title": "Learning event envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_type",
+    "timestamp",
+    "revision",
+    "idempotency_key",
+    "actor",
+    "track_id",
+    "previous_hash",
+    "payload",
+    "event_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_id": {"type": "string", "format": "uuid"},
+    "event_type": {"type": "string", "pattern": "^learning\\.[a-z0-9_]+$"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "revision": {"type": "integer", "minimum": 1},
+    "idempotency_key": {"type": "string", "minLength": 1, "maxLength": 200},
+    "actor": {"type": "string", "minLength": 1, "maxLength": 100},
+    "track_id": {"type": ["string", "null"], "maxLength": 120},
+    "previous_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "payload": {"type": "object"},
+    "event_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

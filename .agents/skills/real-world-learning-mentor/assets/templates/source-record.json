@@ -1,0 +1,13 @@
+{
+  "source_id": "source-unique-id",
+  "title": "来源标题",
+  "url": "https://example.invalid/source",
+  "publisher": "发布者",
+  "accessed_at": "2026-08-26T00:00:00Z",
+  "version_or_date": null,
+  "license": null,
+  "supported_claim": "该来源直接支持的一个结论",
+  "freshness_class": "stable-2y",
+  "expires_at": null,
+  "conflict_status": "unverified"
+}

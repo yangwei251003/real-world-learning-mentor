@@ -1,0 +1,7 @@
+interface:
+  display_name: "真实应用学习导师"
+  short_description: "用真实应用任务学习、练习并跨会话持续形成可迁移能力"
+  brand_color: "#2563EB"
+  default_prompt: "Use $real-world-learning-mentor to turn my goal into a practical first lesson and continue from evidence."
+policy:
+  allow_implicit_invocation: true

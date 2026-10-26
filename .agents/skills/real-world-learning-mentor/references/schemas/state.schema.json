@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/real-world-learning-mentor/state.schema.json",
+  "title": "Derived learner state",
+  "type": "object",
+  "required": ["schema_version", "revision", "last_event_hash", "methodology_preferences", "tracks"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "revision": {"type": "integer", "minimum": 0},
+    "last_event_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "updated_at": {"type": ["string", "null"], "format": "date-time"},
+    "methodology_preferences": {
+      "type": "object",
+      "required": ["mode", "ordered_methods", "preferred_presets", "avoid_methods", "updated_at"],
+      "properties": {
+        "mode": {"enum": ["auto", "locked", "custom"]},
+        "ordered_methods": {"type": "array", "items": {"type": "string"}, "maxItems": 10},
+        "preferred_presets": {"type": "array", "items": {"type": "string"}},
+        "avoid_methods": {"type": "array", "items": {"type": "string"}},
+        "updated_at": {"type": ["string", "null"], "format": "date-time"}
+      }
+    },
+    "tracks": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/track"}
+    }
+  },
+  "$defs": {
+    "track": {
+      "type": "object",
+      "required": [
+        "track_id",
+        "status",
+        "goal",
+        "authentic_outcome",
+        "primary_adapter",
+        "mvc",
+        "route_stage",
+        "current_unit",
+        "next_action",
+        "readiness",
+        "safety_gates",
+        "mastery",
+        "evidence",
+        "weak_points",
+        "assignments",
+        "due_reviews",
+        "sources",
+        "misconceptions",
+        "methodology"
+      ],
+      "properties": {
+        "track_id": {"type": "string"},
+        "status": {"enum": ["active", "completed"]},
+        "goal": {"type": "string"},
+        "authentic_outcome": {"type": "string"},
+        "primary_adapter": {"type": "string"},
+        "secondary_adapter": {"type": ["string", "null"]},
+        "mvc": {"type": "string"},
+        "route_stage": {"enum": ["Taste", "Follow", "Understand", "Modify", "Diagnose", "Transfer", "Capstone"]},
+        "current_unit": {"type": ["string", "object", "null"]},
+        "next_action": {"type": ["string", "object", "null"]},
+        "readiness": {
+          "type": "object",
+          "required": ["status", "score", "total", "required_score", "missed_concepts"],
+          "properties": {
+            "status": {"enum": ["not_assessed", "passed", "remediation_required"]},
+            "score": {"type": ["integer", "null"], "minimum": 0},
+            "total": {"type": ["integer", "null"], "minimum": 1},
+            "required_score": {"type": ["integer", "null"], "minimum": 0},
+            "missed_concepts": {"type": "array"}
+          }
+        },
+        "safety_gates": {"type": "array", "items": {"type": "object"}},
+        "mastery": {"type": "object"},
+        "evidence": {"type": "array", "items": {"type": "object"}},
+        "weak_points": {"type": "array"},
+        "assignments": {"type": "array"},
+        "due_reviews": {"type": "array"},
+        "sources": {"type": "array"},
+        "misconceptions": {"type": "array"},
+        "methodology": {"type": "object"}
+      }
+    }
+  }
+}

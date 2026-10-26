@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-26T00:00:00+08:00",
+  "condition": "无 real-world-learning-mentor、无持久学习状态协议，只按普通对话助手默认行为模拟。",
+  "evidence_level": "structured_pre_skill_hypothesis",
+  "integrity_note": "本文件只记录可复现的 RED 失败假设，不伪装成已执行的原始模型日志。正式 GREEN 对比前必须在隔离会话重放同一输入并另存不可改写的原始响应。",
+  "common_observations": [
+    "倾向给大而全路线或知识清单，而非当前真实行动。",
+    "理论、项目和证据常彼此脱节。",
+    "用户说直接安排后仍被要求做大量路线选择。",
+    "跨会话无法准确恢复目标、薄弱点和下一动作。",
+    "照抄成功、自述成功和真正迁移容易被混为一谈。",
+    "快速变化领域的来源、版本、日期和过期条件不稳定。",
+    "连续错误后常重复解释或追加信息，而非调整粒度。",
+    "不同领域容易套用同一种章节或项目模板。"
+  ],
+  "cases": [
+    {"case": "A", "scenario": "零基础 Python，要求直接安排", "typical_failure": "给完整语法路线并继续反问方向、工具和课时。", "observable_evidence": ["首轮出现六个以上模块", "没有生活成果或 15 分钟动作", "用户承担路线决策"]},
+    {"case": "B", "scenario": "摄影，拒绝理论先行", "typical_failure": "口头同意实践，随后解释曝光三角或给技巧清单。", "observable_evidence": ["拍摄前出现多个定义", "无明确比较对象和验收", "没有作品证据请求"]},
+    {"case": "C", "scenario": "经济学现实用途", "typical_failure": "罗列用途后给微观、宏观和书单。", "observable_evidence": ["用户没有作出判断或解释", "现实案例只是装饰", "无可提交证据"]},
+    {"case": "D", "scenario": "继续上次课程", "typical_failure": "要求用户重述历史，或凭猜测继续。", "observable_evidence": ["说不出目标、阶段、薄弱点和下一动作", "无法追溯恢复依据", "跨会话起点不稳定"]},
+    {"case": "E", "scenario": "一次教完整个领域", "typical_failure": "输出百科总览、几十项路线，或把选择重新抛给用户。", "observable_evidence": ["首轮概念数失控", "没有学习操作", "没有节奏门"]},
+    {"case": "F", "scenario": "快速变化软件或 AI", "typical_failure": "凭记忆给命令；临时搜索时也不记录版本和有效期。", "observable_evidence": ["无权威来源和访问日期", "无版本适用范围", "无法判断后续资料是否过期"]},
+    {"case": "G", "scenario": "偏理论人文学科", "typical_failure": "教材式年代/书目，或强行套泛化项目。", "observable_evidence": ["没有真实的材料分析行为", "所谓项目与学科证据方法脱节", "领域间只替换名词"]},
+    {"case": "H", "scenario": "持续照抄但不会解释", "typical_failure": "看到成品便称赞完成并进入下一课。", "observable_evidence": ["复制被标成掌握", "没有解释、变化或诊断检查", "轻微变式即再次索要答案"]},
+    {"case": "I", "scenario": "连续答错", "typical_failure": "重复同一解释、直接公布答案或增加更多例子。", "observable_evidence": ["粒度和术语难度不变", "没有定位具体误区", "信息增加但正确率不改善"]},
+    {"case": "J", "scenario": "当前内容已经掌握", "typical_failure": "仍按预设顺序复习；另一极端是只听自述就跳级。", "observable_evidence": ["任务难度未随证据变化", "升级或不升级没有证据依据", "重复同型场景"]}
+  ]
+}

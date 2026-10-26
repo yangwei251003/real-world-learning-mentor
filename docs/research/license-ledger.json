@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-26T23:25:01+08:00",
+  "policy": "V1 imports no third-party source code, course prose, exercises, tests, images, brand assets or state data. A permissive license does not remove the need for attribution/notice if copying ever occurs; the selected default is original reimplementation.",
+  "entries": [
+    {
+      "id": "LIC-OAI-DOCS",
+      "asset": "OpenAI Learn documentation",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "license_or_terms": "Official documentation; no project-wide reuse license asserted here",
+      "planned_use": "Fact verification and original summary",
+      "allowed_in_v1": "URLs and short factual attribution",
+      "prohibited_or_requires_review": "Copying substantial prose, examples, assets or implied endorsement",
+      "risk": "medium",
+      "decision": "reference_only"
+    },
+    {
+      "id": "LIC-OPENAI-SKILLS",
+      "asset": "openai/skills",
+      "url": "https://github.com/openai/skills",
+      "license_or_terms": "Per-skill LICENSE.txt; repository page marked deprecated",
+      "planned_use": "Historical architecture observation only",
+      "allowed_in_v1": "No import planned",
+      "prohibited_or_requires_review": "Any file-level reuse without checking the exact skill license and current guidance",
+      "risk": "medium",
+      "decision": "do_not_import"
+    },
+    {
+      "id": "LIC-MICROSOFT-AGENTS",
+      "asset": "microsoft/ai-agents-for-beginners",
+      "url": "https://github.com/microsoft/ai-agents-for-beginners",
+      "license_or_terms": "MIT",
+      "planned_use": "Observe course-unit organization",
+      "allowed_in_v1": "Original implementation of abstract course-flow ideas",
+      "prohibited_or_requires_review": "Copying lesson prose, diagrams, samples, translations, logos or course sequence as content",
+      "risk": "low_if_original",
+      "decision": "mechanism_only"
+    },
+    {
+      "id": "LIC-FREECODECAMP",
+      "asset": "freeCodeCamp/freeCodeCamp",
+      "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+      "license_or_terms": "BSD-3-Clause in main repository; associated CurriculumExpansion is CC-BY-SA-4.0",
+      "planned_use": "Observe validation-oriented curriculum organization",
+      "allowed_in_v1": "Original data schema and tests",
+      "prohibited_or_requires_review": "Copying curriculum prose, challenge text, tests, media or any associated repository without per-file license check",
+      "risk": "medium_due_to_mixed_content",
+      "decision": "mechanism_only"
+    },
+    {
+      "id": "LIC-EXERCISM-PYTHON",
+      "asset": "exercism/python",
+      "url": "https://github.com/exercism/python",
+      "license_or_terms": "MIT",
+      "planned_use": "Observe concept/exercise/test separation",
+      "allowed_in_v1": "Original task-contract interface",
+      "prohibited_or_requires_review": "Copying exercises, tests, canonical data, reference solutions or generated READMEs",
+      "risk": "low_if_original",
+      "decision": "mechanism_only"
+    },
+    {
+      "id": "LIC-AIDER",
+      "asset": "Aider-AI/aider",
+      "url": "https://github.com/Aider-AI/aider",
+      "license_or_terms": "Apache-2.0",
+      "planned_use": "Observe evidence-first / minimal-change / verify loop",
+      "allowed_in_v1": "Independent, domain-neutral feedback-loop design",
+      "prohibited_or_requires_review": "Copying source, prompts, docs, UI text or tests without Apache notice compliance and separate review",
+      "risk": "low_if_original",
+      "decision": "mechanism_only"
+    },
+    {
+      "id": "LIC-LANGGRAPH",
+      "asset": "langchain-ai/langgraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "license_or_terms": "MIT",
+      "planned_use": "Observe persistence boundary concepts",
+      "allowed_in_v1": "Independent local event-log design",
+      "prohibited_or_requires_review": "Copying framework code, API signatures, documentation or tests",
+      "risk": "low_if_original",
+      "decision": "mechanism_only"
+    },
+    {
+      "id": "LIC-OPENEDX",
+      "asset": "openedx/openedx-platform",
+      "url": "https://github.com/openedx/openedx-platform",
+      "license_or_terms": "AGPL-3.0 unless otherwise noted",
+      "planned_use": "Negative scope and high-level content/state separation observation",
+      "allowed_in_v1": "No source/content import",
+      "prohibited_or_requires_review": "Copying, modifying, linking implementation pieces, demo course content or creating derivative integration",
+      "risk": "high_copyleft",
+      "decision": "do_not_import"
+    },
+    {
+      "id": "LIC-OPENEDX-DEMO",
+      "asset": "openedx/openedx-demo-course",
+      "url": "https://github.com/openedx/openedx-demo-course",
+      "license_or_terms": "CC BY-NC-SA 3.0 US",
+      "planned_use": "None beyond license/scope awareness",
+      "allowed_in_v1": "No content import",
+      "prohibited_or_requires_review": "Course text, questions, media, derivative course structure for commercial/closed distribution",
+      "risk": "high_content_license",
+      "decision": "do_not_import"
+    },
+    {
+      "id": "LIC-ANKI",
+      "asset": "ankitects/anki",
+      "url": "https://github.com/ankitects/anki",
+      "license_or_terms": "AGPL-3.0-or-later; docs-site has CC BY-SA 4.0; assets have separate notes",
+      "planned_use": "Recognize spaced review as a product need only",
+      "allowed_in_v1": "Original due-review state field",
+      "prohibited_or_requires_review": "Code, scheduling algorithm, UI, logo, documentation, translations or card content",
+      "risk": "high_copyleft_and_asset_mix",
+      "decision": "do_not_import"
+    },
+    {
+      "id": "LIC-ST",
+      "asset": "ST STM32 product/documentation pages",
+      "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f103c8.html",
+      "license_or_terms": "Vendor documentation and software may have separate terms",
+      "planned_use": "Factual hardware capability and safety verification",
+      "allowed_in_v1": "Paraphrased facts with source URL; user-specific pinout requires exact datasheet/board confirmation",
+      "prohibited_or_requires_review": "Bundling Cube firmware, example code, data sheets, diagrams or mixed-license packages",
+      "risk": "medium_mixed_vendor_terms",
+      "decision": "reference_only"
+    },
+    {
+      "id": "LIC-LEARNING-RESEARCH",
+      "asset": "Articles and institutional learning reports in source ledger",
+      "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/1",
+      "license_or_terms": "Mixed: government publication, publisher copyright and institutional terms",
+      "planned_use": "Evidence synthesis in original wording",
+      "allowed_in_v1": "Short citations and paraphrased design rationale",
+      "prohibited_or_requires_review": "Long excerpts, figures, tables, copies of assignments or textbook-like redistribution",
+      "risk": "medium",
+      "decision": "reference_only"
+    }
+  ]
+}

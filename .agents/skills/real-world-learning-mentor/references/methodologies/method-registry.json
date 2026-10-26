@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "activation_limit": {
+    "primary_methods": 1,
+    "supporting_methods": 2,
+    "other_methods": "background_audit_only"
+  },
+  "methods": [
+    {
+      "id": "first_principles",
+      "name": "第一性原理",
+      "aliases": ["first principles", "底层理解"],
+      "role": "从本质解释概念并支持举一反三",
+      "trigger": "概念混乱、反复记错、迁移失败",
+      "constraint": "只下钻到当前任务所需层级，不扩写成长篇理论课"
+    },
+    {
+      "id": "occams_razor",
+      "name": "奥卡姆剃刀",
+      "aliases": ["occam", "极简", "极简高效"],
+      "role": "精简路线和步骤",
+      "trigger": "路线过长、知识过多、用户时间少",
+      "constraint": "不得删除安全、准确性和必要先修"
+    },
+    {
+      "id": "socratic_questioning",
+      "name": "苏格拉底式提问",
+      "aliases": ["苏格拉底", "socratic"],
+      "role": "激活预测、选择和解释",
+      "trigger": "用户被动接收、能做但说不清",
+      "constraint": "每轮最多一个核心问题，问题必须推动当前任务"
+    },
+    {
+      "id": "adversarial_review",
+      "name": "对抗性审查",
+      "aliases": ["对抗审查", "避坑", "adversarial review"],
+      "role": "排查风险、误区和方案漏洞",
+      "trigger": "高风险、高成本、反复失败、方案可疑",
+      "constraint": "审查后必须给出可执行修正，不制造警告墙"
+    },
+    {
+      "id": "brainstorm_transfer",
+      "name": "头脑风暴拓维",
+      "aliases": ["头脑风暴", "迁移创新", "brainstorming"],
+      "role": "扩展迁移与创新场景",
+      "trigger": "核心任务已验收，需要应用扩展",
+      "constraint": "当前成果未验收前不倾倒创意，默认最多一个迁移方向"
+    },
+    {
+      "id": "feynman",
+      "name": "费曼学习法",
+      "aliases": ["费曼", "feynman"],
+      "role": "把抽象概念讲成可复述语言",
+      "trigger": "术语抽象、用户解释不清",
+      "constraint": "大白话后补准确术语、边界和反例"
+    },
+    {
+      "id": "mvp_learning",
+      "name": "MVP 最小可行学习法",
+      "aliases": ["mvp", "MVP学习", "最小可行学习"],
+      "role": "让用户快速进入真实行动",
+      "trigger": "目标模糊、时间少、容易拖延",
+      "constraint": "最小任务也必须有真实结果和证据"
+    },
+    {
+      "id": "reverse_decomposition",
+      "name": "逆向拆解学习法",
+      "aliases": ["逆向拆解", "案例优先", "reverse decomposition"],
+      "role": "从成果反推知识和步骤",
+      "trigger": "用户有明确成品或实践偏好",
+      "constraint": "先确认资源、权限、约束和安全"
+    },
+    {
+      "id": "closed_loop_review",
+      "name": "闭环复盘法",
+      "aliases": ["闭环复盘", "复盘", "closed loop review"],
+      "role": "固化错误修正和下一步",
+      "trigger": "学完易忘、反复踩坑、阶段结束",
+      "constraint": "复盘必须短于主要任务"
+    },
+    {
+      "id": "gray_cognition_black_white_execution",
+      "name": "灰度认知 + 黑白执行",
+      "aliases": ["灰度认知", "黑白执行", "无歧义执行"],
+      "role": "在不确定中清晰推进",
+      "trigger": "信息不完整但需要行动",
+      "constraint": "区分确定、条件成立和未知；步骤必须有输入、动作、预期、停止条件和错误分支"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/real-world-learning-mentor/evaluation-report.schema.json",
+  "title": "Blind behavior judge report",
+  "type": "object",
+  "required": ["judge_id", "candidate_id", "cases"],
+  "properties": {
+    "judge_id": {"type": "string", "minLength": 1},
+    "candidate_id": {"type": "string", "minLength": 1},
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["case_id", "dimension_scores", "dimension_evidence", "hard_failures"],
+        "properties": {
+          "case_id": {"type": "string", "minLength": 1},
+          "dimension_scores": {
+            "type": "object",
+            "required": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"],
+            "additionalProperties": false,
+            "properties": {
+              "D1": {"type": "integer", "minimum": 0, "maximum": 4},
+              "D2": {"type": "integer", "minimum": 0, "maximum": 4},
+              "D3": {"type": "integer", "minimum": 0, "maximum": 4},
+              "D4": {"type": "integer", "minimum": 0, "maximum": 4},
+              "D5": {"type": "integer", "minimum": 0, "maximum": 4},
+              "D6": {"type": "integer", "minimum": 0, "maximum": 4},
+              "D7": {"type": "integer", "minimum": 0, "maximum": 4},
+              "D8": {"type": "integer", "minimum": 0, "maximum": 4},
+              "D9": {"type": "integer", "minimum": 0, "maximum": 4}
+            }
+          },
+          "dimension_evidence": {
+            "type": "object",
+            "required": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"],
+            "additionalProperties": false,
+            "properties": {
+              "D1": {"type": "string", "minLength": 1},
+              "D2": {"type": "string", "minLength": 1},
+              "D3": {"type": "string", "minLength": 1},
+              "D4": {"type": "string", "minLength": 1},
+              "D5": {"type": "string", "minLength": 1},
+              "D6": {"type": "string", "minLength": 1},
+              "D7": {"type": "string", "minLength": 1},
+              "D8": {"type": "string", "minLength": 1},
+              "D9": {"type": "string", "minLength": 1}
+            }
+          },
+          "hard_failures": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^HF\\d{2}$"}},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

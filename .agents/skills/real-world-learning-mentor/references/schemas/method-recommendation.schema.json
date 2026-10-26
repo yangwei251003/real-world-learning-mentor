@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/real-world-learning-mentor/method-recommendation.schema.json",
+  "title": "Learning method recommendation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "selector_version",
+    "recommendation_id",
+    "preference_mode",
+    "primary_method",
+    "supporting_methods",
+    "background_audit_methods",
+    "confidence",
+    "rationale",
+    "next_evidence_to_collect",
+    "reconsider_when",
+    "frozen_for_session"
+  ],
+  "properties": {
+    "selector_version": {"type": "string"},
+    "recommendation_id": {"type": "string", "format": "uuid"},
+    "preference_mode": {"enum": ["auto", "locked", "custom"]},
+    "primary_method": {"type": "string"},
+    "supporting_methods": {"type": "array", "items": {"type": "string"}, "maxItems": 2, "uniqueItems": true},
+    "background_audit_methods": {"type": "array", "items": {"type": "string"}, "minItems": 10, "maxItems": 10, "uniqueItems": true},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "rationale": {"type": "array", "items": {"type": "string"}, "minItems": 1, "maxItems": 3},
+    "next_evidence_to_collect": {"type": "string", "minLength": 1},
+    "reconsider_when": {"type": "array", "items": {"type": "string"}},
+    "frozen_for_session": {"const": true}
+  }
+}

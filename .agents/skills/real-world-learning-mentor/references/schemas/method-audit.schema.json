@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/real-world-learning-mentor/method-audit.schema.json",
+  "title": "Four-phase ten-method audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["audit_id", "stages"],
+  "properties": {
+    "audit_id": {"type": "string", "minLength": 1},
+    "stages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["research", "planning", "teaching", "review"],
+      "properties": {
+        "research": {"$ref": "#/$defs/records"},
+        "planning": {"$ref": "#/$defs/records"},
+        "teaching": {"$ref": "#/$defs/records"},
+        "review": {"$ref": "#/$defs/records"}
+      }
+    }
+  },
+  "$defs": {
+    "records": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["method_id", "status", "reason", "action", "evidence_ref"],
+        "properties": {
+          "method_id": {"type": "string"},
+          "status": {"enum": ["pass", "adjusted", "deferred_with_reason"]},
+          "reason": {"type": "string"},
+          "action": {"type": "string"},
+          "evidence_ref": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

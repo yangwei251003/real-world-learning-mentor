@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/real-world-learning-mentor/source.schema.json",
+  "title": "Domain research source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "title",
+    "url",
+    "publisher",
+    "accessed_at",
+    "version_or_date",
+    "license",
+    "supported_claim",
+    "freshness_class",
+    "expires_at",
+    "conflict_status"
+  ],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "url": {"type": "string", "format": "uri"},
+    "publisher": {"type": "string", "minLength": 1},
+    "accessed_at": {"type": "string", "format": "date-time"},
+    "version_or_date": {"type": ["string", "null"]},
+    "license": {"type": ["string", "null"]},
+    "supported_claim": {"type": "string", "minLength": 1},
+    "freshness_class": {"enum": ["per-session", "volatile-7-30d", "version-bound-180d", "stable-2y"]},
+    "expires_at": {"type": ["string", "null"], "format": "date-time"},
+    "conflict_status": {"enum": ["none", "open", "resolved", "unverified"]},
+    "use_scope": {"enum": ["historical", "current", "volatile", "high-risk"]},
+    "is_expired_at_recording": {"type": "boolean"}
+  }
+}

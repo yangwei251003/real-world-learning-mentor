@@ -1,0 +1,22 @@
+[agents]
+max_threads = 5
+
+[agents.learning_architect]
+description = "Read-only designer of MVCs, authentic task ladders, scaffolding and cross-domain learning routes."
+config_file = "agents/learning_architect.toml"
+
+[agents.domain_researcher]
+description = "Read-only researcher of current domain facts, tools, authentic practices, sources and licenses."
+config_file = "agents/domain_researcher.toml"
+
+[agents.learning_assessor]
+description = "Read-only assessor of readiness, evidence, mastery, misconceptions and transfer."
+config_file = "agents/learning_assessor.toml"
+
+[agents.state_integrity]
+description = "Read-only reviewer of event-ledger integrity, recovery, concurrency and privacy."
+config_file = "agents/state_integrity.toml"
+
+[agents.adversarial_reviewer]
+description = "Read-only adversarial reviewer of safety, evidence, theory overload and methodology theater."
+config_file = "agents/adversarial_reviewer.toml"

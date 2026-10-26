@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "construction": "每个 valid fixture 必须在临时 Learner_State 中按 operations 顺序调用 state_tool；revision 与事件哈希由工具生成，不能手写。fault_injection fixture 先构造 base_fixture，再只在测试副本中注入故障。",
+  "fixtures": [
+    {
+      "fixture_id": "resume-python-valid",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "python-bill", "goal": "用 Python 整理家庭账单", "authentic_outcome": "输出按类别汇总的中文账单", "primary_adapter": "engineering-programming", "secondary_adapter": "tools-operations", "mvc": "能修改分类规则并排查一条错误记录", "next_action": "把一条新类别加入映射并预测结果"},
+        {"command": "record", "track_id": "python-bill", "event_type": "learning.evidence_recorded", "payload": {"evidence_id": "bill-run-1", "summary": "脚本成功处理示例数据；一条类别仍需修改", "verification_level": "user-reported"}},
+        {"command": "record", "track_id": "python-bill", "event_type": "learning.mastery_updated", "payload": {"concept_id": "dictionary-mapping", "level": "Applied", "evidence_ids": ["bill-run-1"]}},
+        {"command": "record", "track_id": "python-bill", "event_type": "learning.weak_point_recorded", "payload": {"weak_point_id": "unknown-category", "summary": "遇到未知类别时仍依赖完整答案"}},
+        {"command": "record", "track_id": "python-bill", "event_type": "learning.session_progressed", "payload": {"route_stage": "Modify", "current_unit": "新增类别规则", "next_action": "修改一条映射并解释默认分支"}}
+      ]
+    },
+    {
+      "fixture_id": "resume-python-tampered",
+      "kind": "fault-injection",
+      "base_fixture": "resume-python-valid",
+      "fault_injection": {"target": "state.json", "json_pointer": ["tracks", "python-bill", "next_action"], "value": "事件账本中不存在的篡改动作", "mutation": "保持 revision 不变，把 tracks.python-bill.next_action 改成事件账本中不存在的内容", "expected_integrity_result": "fail-closed"}
+    },
+    {
+      "fixture_id": "python-follow-stage",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "python-copy", "goal": "用 Python 重命名生活照片", "authentic_outcome": "独立修改命名规则并恢复一个错误", "primary_adapter": "engineering-programming", "secondary_adapter": "tools-operations", "mvc": "修改、解释并排错一个命名规则", "next_action": "解释复制代码中格式化字符串的两个输入"},
+        {"command": "record", "track_id": "python-copy", "event_type": "learning.evidence_recorded", "payload": {"evidence_id": "copied-run", "summary": "按完整参考复制后运行成功", "verification_level": "user-reported"}},
+        {"command": "record", "track_id": "python-copy", "event_type": "learning.mastery_updated", "payload": {"concept_id": "file-renaming", "level": "Understood"}},
+        {"command": "record", "track_id": "python-copy", "event_type": "learning.session_progressed", "payload": {"route_stage": "Follow", "next_action": "在不看完整答案时改变日期格式"}}
+      ]
+    },
+    {
+      "fixture_id": "statistics-two-same-errors",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "statistics-causality", "goal": "正确解释生活数据中的相关关系", "authentic_outcome": "评价一条相关性新闻结论", "primary_adapter": "data-math", "mvc": "能提出至少一个替代解释", "next_action": "比较两种可能的共同原因"},
+        {"command": "record", "track_id": "statistics-causality", "event_type": "learning.session_progressed", "payload": {"route_stage": "Understand", "misconceptions": [{"id": "correlation-causation-1", "summary": "第一次把相关当因果"}]}},
+        {"command": "record", "track_id": "statistics-causality", "event_type": "learning.session_progressed", "payload": {"route_stage": "Understand", "misconceptions": [{"id": "correlation-causation-1", "summary": "第一次把相关当因果"}, {"id": "correlation-causation-2", "summary": "第二次出现同一误区"}], "next_action": "用更小的反例重新判断"}}
+      ]
+    },
+    {
+      "fixture_id": "english-current-unit-mastered",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "english-hotel", "goal": "独立办理酒店入住", "authentic_outcome": "完成一次可理解的入住情景对话", "primary_adapter": "language-communication", "mvc": "能在信息变化时完成入住并澄清一个问题", "next_action": "把预订姓名变化加入新情景"},
+        {"command": "record", "track_id": "english-hotel", "event_type": "learning.evidence_recorded", "payload": {"evidence_id": "hotel-roleplay-1", "summary": "不看文本完成标准入住", "verification_level": "user-reported"}},
+        {"command": "record", "track_id": "english-hotel", "event_type": "learning.evidence_recorded", "payload": {"evidence_id": "hotel-variant-1", "summary": "改变房型后仍能澄清并完成", "verification_level": "user-reported"}},
+        {"command": "record", "track_id": "english-hotel", "event_type": "learning.mastery_updated", "payload": {"concept_id": "hotel-check-in", "level": "Modified", "evidence_ids": ["hotel-roleplay-1", "hotel-variant-1"]}},
+        {"command": "record", "track_id": "english-hotel", "event_type": "learning.session_progressed", "payload": {"route_stage": "Diagnose", "next_action": "处理预订不存在的故障情景"}}
+      ]
+    },
+    {
+      "fixture_id": "stm32-readiness-failed",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "stm32-led", "goal": "安全完成一个可观察 GPIO 项目", "authentic_outcome": "确认板卡后让状态灯按预期变化", "primary_adapter": "engineering-programming", "secondary_adapter": "tools-operations", "mvc": "能解释供电、输出模式和一个常见不亮原因", "next_action": "只做板卡标识和供电信息确认"},
+        {"command": "record", "track_id": "stm32-led", "event_type": "learning.readiness_assessed", "payload": {"score": 2, "total": 5, "required_score": 4, "passed": false, "missed_concepts": ["供电电压", "断电接线", "GPIO 输出模式"]}},
+        {"command": "record", "track_id": "stm32-led", "event_type": "learning.safety_gate_recorded", "payload": {"gate_id": "board-identity-power", "risk_level": "medium", "status": "blocked", "reason": "板卡和供电未确认"}}
+      ]
+    },
+    {
+      "fixture_id": "photography-awaiting-evidence",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "photo-window-light", "goal": "改善室内生活照片", "authentic_outcome": "同场景两张可比较原图", "primary_adapter": "design-art", "secondary_adapter": "tools-operations", "mvc": "能选择更好一张并说明下一次修改", "next_action": "提交两张原图、参数和选择理由"}
+      ]
+    },
+    {
+      "fixture_id": "product-design-valid-evidence",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "design-reminder", "goal": "改善老人使用提醒盒的可辨认性", "authentic_outcome": "一个经目标用户测试的低保真原型", "primary_adapter": "design-art", "secondary_adapter": "humanities-social", "mvc": "能依据反馈修改并说明未解决约束", "next_action": "分析老人不懂图标的具体原因"},
+        {"command": "record", "track_id": "design-reminder", "event_type": "learning.evidence_recorded", "payload": {"evidence_id": "prototype-comparison", "summary": "两个原型版本、变更说明、三位匿名目标用户反馈；一项可理解性仍失败", "verification_level": "documented"}}
+      ]
+    },
+    {
+      "fixture_id": "marketing-conflicting-evidence",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "marketing-copy", "goal": "判断小店文案是否改善转化", "authentic_outcome": "基于匿名历史数据作出条件性判断", "primary_adapter": "business-career", "secondary_adapter": "data-math", "mvc": "区分点击率、转化率和样本限制", "next_action": "核对两个指标的分母和样本量"},
+        {"command": "record", "track_id": "marketing-copy", "event_type": "learning.evidence_recorded", "payload": {"evidence_id": "copy-metrics", "summary": "点击率上升；样本很小；转化率下降；与用户口头结论冲突", "verification_level": "documented"}}
+      ]
+    },
+    {
+      "fixture_id": "python-resource-change",
+      "kind": "valid-ledger",
+      "operations": [
+        {"command": "begin", "track_id": "python-automation", "goal": "用 Python 自动整理文件", "authentic_outcome": "在电脑上安全预览并执行一批重命名", "primary_adapter": "engineering-programming", "secondary_adapter": "tools-operations", "mvc": "能修改规则并从预览发现错误", "next_action": "在电脑运行 dry-run 预览"},
+        {"command": "record", "track_id": "python-automation", "event_type": "learning.method_mix_set", "payload": {"selector_version": "1.0.0", "preference_mode": "auto", "primary_method": "reverse_decomposition", "supporting_methods": ["mvp_learning", "feynman"], "background_audit_methods": ["first_principles", "occams_razor", "socratic_questioning", "adversarial_review", "brainstorm_transfer", "feynman", "mvp_learning", "reverse_decomposition", "closed_loop_review", "gray_cognition_black_white_execution"], "confidence": 0.86, "rationale": ["原计划有明确电脑成果"], "next_evidence_to_collect": "dry-run 预览", "reconsider_when": ["时间或资源改变"], "frozen_for_session": true}}
+      ]
+    }
+  ]
+}

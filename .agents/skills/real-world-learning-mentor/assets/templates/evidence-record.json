@@ -1,0 +1,10 @@
+{
+  "evidence_id": "ev-unique-id",
+  "summary": "只写证明了什么的最小摘要，不复制原始聊天或敏感内容",
+  "evidence_type": "build-log|measurement|photo|video|text|code-diff|explanation|observation",
+  "verification_level": "user-reported",
+  "relative_ref": null,
+  "sha256": null,
+  "supports": ["concept-or-skill-id"],
+  "limitations": ["尚未独立验证的部分"]
+}
